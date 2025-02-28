@@ -40,7 +40,7 @@ y = sigmoid(Var(0.5, req_grad=True))
 draw_to_html(y, "sigmoid")
 ```
 
-![sigmoid](doc\sigmoid.png)
+![sigmoid](./doc/sigmoid.png)
 
 ### Training a neural net
 
