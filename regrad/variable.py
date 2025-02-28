@@ -80,7 +80,7 @@ class Var:
     def sigmoid(self) -> Var:
         return _apply(Sigmoid, self)
 
-    def _grad(self, dy: float) -> None:
+    def accumulate_grad(self, dy: float) -> None:
         self.grad = dy if self.grad is None else self.grad + dy
 
     def backward(self, dy: Optional[float] = None):
@@ -97,7 +97,7 @@ class Var:
             grads = node.op.backward(node.grad)
             for x, dy in zip(node.src, grads):
                 if x.req_grad:
-                    x._grad(dy)
+                    x.accumulate_grad(dy)
             # clear context of non-leaf node
             node.grad, node.op, node.src = None, None, None
 

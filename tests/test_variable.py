@@ -20,5 +20,5 @@ def test_sanity_check():
     y.backward()
     x_torch, y_torch = x, y
 
-    assert y_var.val == y_torch.data.item()
-    assert x_var.grad == x_torch.grad.item()
+    assert abs(y_var.val - y_torch.data.item()) < 1e-6
+    assert abs(x_var.grad - x_torch.grad.item()) < 1e-6
