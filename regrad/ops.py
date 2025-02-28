@@ -4,8 +4,8 @@ from typing import Any
 
 
 class Op(ABC):
-    def __init__(self, kwargs: Any) -> None:
-        self.kwargs = kwargs  # graph
+    def __init__(self, op_args: Any) -> None:
+        self.op_args = op_args  # graph
         self._cache: Any = None
 
     @property
@@ -180,16 +180,4 @@ class Relu(Op):
     def backward(self, dy: float) -> tuple[float, ...]:
         (mask,) = self.retrieve_from_cache()
         dx = dy * mask
-        return tuple((dx,))
-
-
-class Sigmoid(Op):
-    def forward(self, x: float) -> float:
-        y = 1 / (1 + math.exp(-x))
-        self.save_to_cache(y)
-        return y
-
-    def backward(self, dy: float) -> tuple[float, ...]:
-        (y,) = self.retrieve_from_cache()
-        dx = dy * y * (1 - y)
         return tuple((dx,))

@@ -20,7 +20,7 @@ class Var:
         self.grad: Optional[float] = None
 
     @property
-    def label(self) -> str:
+    def name(self) -> str:
         if self.op is not None:
             return self.op.name
         return self.__class__.__name__
@@ -76,9 +76,6 @@ class Var:
 
     def relu(self) -> Var:
         return _apply(Relu, self)
-
-    def sigmoid(self) -> Var:
-        return _apply(Sigmoid, self)
 
     def accumulate_grad(self, dy: float) -> None:
         self.grad = dy if self.grad is None else self.grad + dy
