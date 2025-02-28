@@ -94,13 +94,10 @@ class Var:
 
         node_queue = _computed_graph_dfs(self, [], set())
         for node in reversed(node_queue):
-
             grads = node.op.backward(node.grad)
-
             for x, dy in zip(node.src, grads):
                 if x.req_grad:
                     x._grad(dy)
-
             # clear context of non-leaf node
             node.grad, node.op, node.src = None, None, None
 
@@ -114,9 +111,7 @@ def _align(v: float | Var) -> Var:
 def _apply(op_: type(Op), *var_args: Var, **kwargs: Any) -> Var:
     op = op_(kwargs)
     fwd_args = [t.val for t in var_args]
-
     val = op.forward(*fwd_args, **kwargs)
-
     result_req_grad = any(t.req_grad for t in var_args)
     if result_req_grad:
         return Var(val, op=op, src=var_args, req_grad=True)
