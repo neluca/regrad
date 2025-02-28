@@ -89,7 +89,7 @@ class Var:
         else:
             self.grad = dy
 
-        node_queue = _computed_graph_dfs(self, [], set())
+        node_queue = _computed_node_dfs(self, [], set())
         for node in reversed(node_queue):
             grads = node.op.backward(node.grad)
             for x, dy in zip(node.src, grads):
@@ -116,13 +116,13 @@ def _apply(op_: type(Op), *var_args: Var, **kwargs: Any) -> Var:
     return Var(val)
 
 
-def _computed_graph_dfs(node: Var, queue: list[Var], visited: set) -> list[Var]:
+def _computed_node_dfs(node: Var, queue: list[Var], visited: set) -> list[Var]:
     if node not in visited:
         visited.add(node)
         if node.src is None:
             return []
         for p in node.src:
             if p.req_grad:
-                _ = _computed_graph_dfs(p, queue, visited)
+                _ = _computed_node_dfs(p, queue, visited)
         queue.append(node)
     return queue
