@@ -72,7 +72,7 @@ def build_mermaid_script(root_node: Var, orientation: Literal["LR", "TD"] = "TD"
     return _script
 
 
-def draw_to_html(root_node: Var, name: str, orientation: Literal["LR", "TD"] = "TD") -> None:
+def draw_to_html(root_node: Var, name: str, orientation: Literal["LR", "RL", "TB", "BT"] = "TB") -> None:
     mermaid_script = build_mermaid_script(root_node, orientation=orientation)
     html = Mermaid(mermaid_script, name)
     with open(name + ".html", "w", encoding="utf-8") as f:

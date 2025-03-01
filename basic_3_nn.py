@@ -27,17 +27,17 @@ def loss(batch_size=None):
     # L2 regularization
     alpha = 1e-4
     reg_loss = alpha * sum((p * p for p in model.parameters()))
-    total_loss = data_loss + reg_loss
+    total_loss_ = data_loss + reg_loss
 
     accuracy = [(yi > 0) == (output_yi.val > 0) for yi, output_yi in zip(y, output_y)]
-    return total_loss, sum(accuracy) / len(accuracy)
+    return total_loss_, sum(accuracy) / len(accuracy)
 
 
 total_loss, acc = loss()
 print(total_loss, acc)
 
 # optimization
-for epoch in range(50):
+for epoch in range(100):
 
     # forward
     total_loss, acc = loss()
@@ -52,7 +52,7 @@ for epoch in range(50):
         p.val -= learning_rate * p.grad
 
     if epoch % 1 == 0:
-        print(f"step {epoch} loss {total_loss.val:.4f}, accuracy {acc * 100:.4f}%")
+        print(f"step {epoch} loss {total_loss.val:.4f}, accuracy {acc * 100:.1f}%")
 
 # visualize decision boundary
 
@@ -63,8 +63,8 @@ xx, yy = np.meshgrid(np.arange(x_min, x_max, h),
                      np.arange(y_min, y_max, h))
 x_mesh = np.c_[xx.ravel(), yy.ravel()]
 inputs = [list(map(Var, x_row)) for x_row in x_mesh]
-output_y = list(map(model, inputs))
-z = np.array([s.val > 0 for s in output_y])
+m_output_y = list(map(model, inputs))
+z = np.array([s.val > 0 for s in m_output_y])
 z = z.reshape(xx.shape)
 
 fig = plt.figure()
