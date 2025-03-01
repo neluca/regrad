@@ -7,5 +7,4 @@ def sigmoid(x: Var) -> Var:
 
 
 y = sigmoid(Var(0.5, req_grad=True))
-draw_to_html(y, "sigmoid")
-
+draw_to_html(y, "computed_graph_sigmoid")
