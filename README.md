@@ -5,6 +5,7 @@
 
 ```python
 from regrad import Var
+from tools import draw_to_html
 
 a = Var(-4.0, req_grad=True)
 b = Var(2.0, req_grad=True)
@@ -23,7 +24,12 @@ print(f'{g.val:.4f}')   # prints 24.7041, the outcome of this forward pass
 g.backward()
 print(f'{a.grad:.4f}')  # prints 222.1341, i.e. the numerical value of dg/da
 print(f'{b.grad:.4f}')  # prints 978.7784, i.e. the numerical value of dg/db
+
+y = a + a ** 2
+draw_to_html(y, "computed_graph_pow")
 ```
+
+![sigmoid](./doc/computed_graph_pow.png)
 
 ### Basic sigmoid
 
@@ -40,7 +46,7 @@ y = sigmoid(Var(0.5, req_grad=True))
 draw_to_html(y, "sigmoid")
 ```
 
-![sigmoid](./doc/sigmoid.png)
+![sigmoid](./doc/computed_graph_sigmoid.png)
 
 ### Basic  MLP
 
@@ -49,13 +55,14 @@ from regrad import Var
 from tools.nn import MLP
 from tools import draw_to_html
 
-model = MLP(1, [3, 1])  # 3-neurons, 1-layer
+model = MLP(2, [3, 1])  # 3-neurons, 1-layer
 print("number of parameters", len(model.parameters()))
-y = model([Var(1)])
+x = Var(0.5)
+y = model([x, x ** 2])
 draw_to_html(y, "computed_graph_mlp", "BT")
 ```
 
-
+![mlp](./doc/computed_graph_mlp.png)
 
 ### Training a neural net
 

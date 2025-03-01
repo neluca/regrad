@@ -14,7 +14,8 @@ def get_node_info(node: Var) -> tuple[str, str, str | None]:
     node_data = f"{node.val:.4f}"
     node_args = None
     if node.op is not None and len(node.op.op_args) != 0:
-        node_args = f"{node.op.op_args}"
+        op_args = [f"{k}={v}" for k, v in node.op.op_args.items()]
+        node_args = ", ".join(op_args)
     return node_name, node_args, node_data
 
 
