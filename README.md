@@ -1,5 +1,5 @@
 # regrad
-**regrad** is an educational implementation of reverse mode automatic differentiation that is <u>distinct</u> from Karpathy's [micrograd ](https://github.com/karpathy/micrograd).
+**regrad** is an educational implementation of reverse mode automatic differentiation that is **<u>distinct</u>** from Karpathy's [micrograd ](https://github.com/karpathy/micrograd).
 
 ### Example usage
 
@@ -44,7 +44,22 @@ draw_to_html(y, "sigmoid")
 
 ### Basic  MLP
 
+```python
+from regrad import Var
+from tools.nn import MLP
+from tools import draw_to_html
+
+model = MLP(1, [3, 1])  # 3-neurons, 1-layer
+print("number of parameters", len(model.parameters()))
+y = model([Var(1)])
+draw_to_html(y, "computed_graph_mlp", "BT")
+```
+
+
+
 ### Training a neural net
+
+![moons_mlp](./doc/moons_mlp.png)
 
 ### Tracing / visualization
 
