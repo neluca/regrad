@@ -1,4 +1,6 @@
 # regrad
+[中文](./README_zh.md)
+
 **regrad** is an educational implementation of reverse mode automatic differentiation that is **<u>distinct</u>** from Karpathy's [micrograd ](https://github.com/karpathy/micrograd). It helps users gain a deep understanding of how automatic differentiation works. The `tools` in `regrad` can easily generate computation graphs with different colors for different types of nodes: dark blue for variable nodes that can compute gradients, light blue for variables and constants that cannot compute gradients, and gray for operator nodes. The graphing tool does not rely on external Python libraries.
 
 ##### differences between `regrad` and `micrograd` :
