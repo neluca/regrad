@@ -1,5 +1,12 @@
 # regrad
-**regrad** is an educational implementation of reverse mode automatic differentiation that is **<u>distinct</u>** from Karpathy's [micrograd ](https://github.com/karpathy/micrograd).
+**regrad** is an educational implementation of reverse mode automatic differentiation that is **<u>distinct</u>** from Karpathy's [micrograd ](https://github.com/karpathy/micrograd). It helps users gain a deep understanding of how automatic differentiation works. The `tools` in `regrad` can easily generate computation graphs with different colors for different types of nodes: dark blue for variable nodes that can compute gradients, light blue for variables and constants that cannot compute gradients, and gray for operator nodes. The graphing tool does not rely on external Python libraries.
+
+##### differences between `regrad` and `micrograd` :
+
+
+• `micrograd` focuses on variables, while `regrad` focuses on operators. `regrad`is more mathematical, whereas `micrograd` is more programming-oriented.
+
+• `micrograd` stores intermediate gradients in the computation graph. However, gradients are only meaningful at the leaf nodes of the graph. Therefore, `regrad`does not store intermediate gradients, which saves memory, especially in tensor computations.
 
 ### Example usage
 
@@ -29,26 +36,28 @@ y = a + a ** 2
 draw_to_html(y, "computed_graph_pow")
 ```
 
+The generated computation graph with an exponential function looks like this:
+
 ![sigmoid](./doc/computed_graph_pow.png)
 
-### Basic sigmoid
+### Sigmoid Example
 
 ```python
 from regrad import Var
 from tools import draw_to_html
 
-
 def sigmoid(x: Var) -> Var:
     return 1 / (1 + (-x).exp())
 
-
 y = sigmoid(Var(0.5, req_grad=True))
-draw_to_html(y, "sigmoid")
+draw_to_html(y, "computed_graph_sigmoid")
 ```
+
+This generates a beautiful computation graph for the `sigmoid` function:
 
 ![sigmoid](./doc/computed_graph_sigmoid.png)
 
-### Basic  MLP
+### Debugging a Multi-Layer Perceptron(MLP)
 
 ```python
 from regrad import Var
@@ -62,13 +71,15 @@ y = model([x, x ** 2])
 draw_to_html(y, "computed_graph_mlp", "BT")
 ```
 
+The generated computation graph looks like this:
+
 ![mlp](./doc/computed_graph_mlp.png)
 
 ### Training a neural net
 
-![moons_mlp](./doc/moons_mlp.png)
+This example is inspired by micrograd's `demo.ipynb` and is implemented in `basic_3_nn.py` . The code provides a full demo of training an 2-layer neural network (MLP) binary classifier. This is achieved by initializing a neural net from `tools.nn` module, implementing a simple svm "max-margin" binary classification loss and using SGD for optimization. As shown in the notebook, using a 2-layer neural net with two 16-node hidden layers we achieve the following decision boundary on the moon dataset:
 
-### Tracing / visualization
+![moons_mlp](./doc/moons_mlp.png)
 
 ### Running tests
 
