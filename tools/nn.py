@@ -11,7 +11,7 @@ class Cell(ABC):
 
     @abstractmethod
     def parameters(self) -> list[Var]:
-        raise NotImplementedError("Subclasses must implement the forward method.")
+        raise NotImplementedError("Subclasses must implement the \"parameters\" method.")
 
 
 class Neuron(Cell):
