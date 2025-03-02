@@ -79,7 +79,7 @@ The generated computation graph looks like this:
 
 ### Training a neural net
 
-This example is inspired by micrograd's `demo.ipynb` and is implemented in `basic_3_nn.py` . The code provides a full demo of training an 2-layer neural network (MLP) binary classifier. This is achieved by initializing a neural net from `tools.nn` module, implementing a simple svm "max-margin" binary classification loss and using SGD for optimization. As shown in the notebook, using a 2-layer neural net with two 16-node hidden layers we achieve the following decision boundary on the moon dataset:
+This example is inspired by micrograd's `demo.ipynb` and is implemented in `basic_3_nn.py` . The code provides a full demo of training an 2-layer neural network (MLP) binary classifier. This is achieved by initializing a neural net from `tools.nn` module, implementing a simple svm "max-margin" binary classification loss and using SGD for optimization. As shown in the code, using a 2-layer neural net with two 16-node hidden layers we achieve the following decision boundary on the moon dataset:
 
 ![moons_mlp](./doc/moons_mlp.png)
 
