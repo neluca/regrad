@@ -38,7 +38,7 @@ y = a + a ** 2
 draw_to_html(y, "computed_graph_pow")
 ```
 
-The generated computation graph with an exponential function looks like this:
+The generated computation graph with a power function looks like this:
 
 ![pow](./doc/computed_graph_pow.png)
 

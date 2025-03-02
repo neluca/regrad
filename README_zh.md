@@ -35,7 +35,7 @@ y = a + a ** 2
 draw_to_html(y, "computed_graph_pow")
 ```
 
-画出的包含指数函数的计算图如下：
+画出的包含幂函数的计算图如下：
 
 ![pow](./doc/computed_graph_pow.png)
 
