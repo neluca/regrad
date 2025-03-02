@@ -37,7 +37,7 @@ draw_to_html(y, "computed_graph_pow")
 
 画出的包含指数函数的计算图如下：
 
-![sigmoid](./doc/computed_graph_pow.png)
+![pow](./doc/computed_graph_pow.png)
 
 ### Sigmoid举例
 

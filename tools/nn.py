@@ -5,7 +5,6 @@ from regrad import Var
 
 
 class Cell(ABC):
-
     def zero_grad(self) -> None:
         for p in self.parameters():
             p.grad = 0

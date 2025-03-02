@@ -40,7 +40,7 @@ draw_to_html(y, "computed_graph_pow")
 
 The generated computation graph with an exponential function looks like this:
 
-![sigmoid](./doc/computed_graph_pow.png)
+![pow](./doc/computed_graph_pow.png)
 
 ### Sigmoid Example
 
