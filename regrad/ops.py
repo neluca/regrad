@@ -88,7 +88,7 @@ class Neg(Op):
 
 
 class Pow(Op):
-    def forward(self, x: float, power: float) -> float:
+    def forward(self, x: float, *, power: float) -> float:
         y = x ** power
         self.save_to_cache(x, power)
         return y
