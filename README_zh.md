@@ -1,4 +1,4 @@
-# regrad
+# regrad [![unit_test](https://github.com/neluca/regrad/actions/workflows/unit_test.yaml/badge.svg)](https://github.com/neluca/regrad/actions/workflows/unit_test.yaml) 
 
 **regrad**是一个不同于 [micrograd ](https://github.com/karpathy/micrograd)的小巧反向自动微分实现，可以让人深入了解自动微分的运行机制。`regrad`的`tools`可以非常方便地画出计算图，并用不同的颜色标记不同类型的节点。深蓝色代表可以计算梯度的变量节点，浅蓝色代表不可计算梯度的变量和常量节点，灰色代表算子节点。作图工具不依赖`Python`的外部库。
 
