@@ -63,7 +63,7 @@ def _build_mermaid_script(node: Var, _script: str) -> str:
     return _script
 
 
-def build_mermaid_script(root_node: Var, orientation: Literal["LR", "TB"] = "TB") -> str:
+def build_mermaid_script(root_node: Var, orientation: Literal["LR", "RL", "TB", "BT"] = "TB") -> str:
     _script = f"graph {orientation}\n"
     _script += get_mermaid_node_info(root_node) + "\n"
     _script += get_mermaid_node_style(root_node) + "\n"
