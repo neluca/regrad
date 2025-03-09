@@ -5,7 +5,7 @@
 #### `regrad`与`micrograd`的不同点：
 
 - `mcriograd`以变量视角，而`regrad`则以算子视角。`regrad`更加的数学，`micrograd`更加的程序。
-- `micrograd`会保存计算图的中间梯度，而实际上梯度只有在计算图的叶子节点上才会起作用，所以`regrad`不保存计算图的中间梯度，这在后续`tensor`的计算中非常节约内存。
+- `micrograd`会保存计算图的中间梯度，而实际上梯度只有在计算图的叶子节点上才会起作用，所以`regrad`不保存计算图的中间梯度，这在后续 [tensor](https://github.com/neluca/microtorch) 的计算中非常节约内存。
 
 ### 使用举例
 

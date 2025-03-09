@@ -8,7 +8,7 @@
 
 • `micrograd` focuses on variables, while `regrad` focuses on operators. `regrad`is more mathematical, whereas `micrograd` is more programming-oriented.
 
-• `micrograd` stores intermediate gradients in the computation graph. However, gradients are only meaningful at the leaf nodes of the graph. Therefore, `regrad`does not store intermediate gradients, which saves memory, especially in tensor computations.
+• `micrograd` stores intermediate gradients in the computation graph. However, gradients are only meaningful at the leaf nodes of the graph. Therefore, `regrad`does not store intermediate gradients, which saves memory, especially in [tensor](https://github.com/neluca/microtorch) computations.
 
 ### Example usage
 
